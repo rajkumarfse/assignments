@@ -1,0 +1,15 @@
+<form [formGroup]="employeeAddForm" (ngSubmit)="onFormSubmit(employeeAddForm.value)">
+  <div class="form-group">
+    <label for="empName">Name</label>
+    <input type="text" formControlName="name" class="form-control" id="empName" placeholder="Enter name">
+  </div>
+  <div class="form-group">
+    <label for="empAge">Age</label>
+    <input type="number" formControlName="age" class="form-control" id="empAge" min="1" max="150" placeholder="Enter age">
+  </div>
+  <div class="form-group">
+      <label for="empEmail">Email address</label>
+      <input type="email" formControlName="email" class="form-control" id="empEmail"  placeholder="Enter email">
+  </div>
+  <button type="submit" [disabled]="!employeeAddForm.valid" class="btn btn-primary">Submit</button>
+</form>

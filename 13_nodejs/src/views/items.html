@@ -1,0 +1,26 @@
+{{> html-top}}
+
+    <!-- ITEMS LIST -->
+    <div class="container">
+        <h1>Items</h1>
+        {{#items}}        
+        <div class="item-teaser">
+            <div class="item-img">
+                <img src="/images/{{image_path}}" />
+            </div>
+            <div class="item-details">
+                <h2>{{title}}</h2>
+                <ul class="item-props">
+                    {{#attr}}
+                    <li><span>{{name}}:</span> {{value}}</li>
+                    {{/attr}}
+                </ul>
+                <div class="item-cto">
+                    <a href="/items/{{id}}" class="btn blue btn-primary">View Details >> </a>
+                </div>
+            </div>
+        </div>
+        {{/items}}        
+    </div>
+
+{{> html-bottom}}

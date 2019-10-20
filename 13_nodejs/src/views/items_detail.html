@@ -1,0 +1,33 @@
+{{> html-top}}
+
+    <!-- ITEM DETAIL -->
+    <div class="container">        
+        {{#items}}
+        <h1><a href="/items">Items</a> / {{title}}</h1>
+        <div class="item-view">
+            <div class="item-img">
+                <img src="/images/{{image_path}}" />
+            </div>
+            <div class="item-details">
+                <h2>{{title}}</h2>
+                <ul class="item-props">
+                    {{#attr}}
+                    <li><span>{{name}}:</span> {{value}}</li>
+                    {{/attr}}
+                </ul>
+                <div class="item-qty">
+                    <button class="btn btn-minus">-</button>
+                    <input type="number" name="qty" value="1" size="2" min="0" max="10" readonly/> 
+                    <button class="btn btn-plus">+</button>
+                </div>
+                <div class="item-cto">
+                    <button class="btn blue btn-full btn-stack btn-add-to-cart" data-item-id="{{id}}">Add to Cart</button>                            
+                    <button class="btn blue btn-full btn-stack btn-order-now" data-item-id="{{id}}">Order Now</button>
+                </div>
+            </div>
+        </div>   
+        {{/items}}        
+        <a href="/items" class="btn orange"><< Go Back</a>          
+    </div>
+
+{{> html-bottom}}

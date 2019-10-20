@@ -1,0 +1,43 @@
+{{^is_partial}}
+{{> html-top}}
+{{/is_partial}}
+
+    <!-- ORDERS -->
+    <div class="container">
+        <h1>My Requests</h1>    
+        <div class="orders mb-1">
+            {{#orders}}
+            <div class="order-item {{^is_pending}}completed{{/is_pending}}">
+                <h2>Order Number: #{{id}}</h2>
+                <div class="order-status">
+                    Status: {{status_text}}
+                </div>
+                <div class="order-desc">
+                    <span class="circle">{{items.length}}</span> Item(s) in this order.
+                </div>
+                <div class="order-total">
+                    Order Total <span>INR {{total}}</span>
+                </div>  
+                
+                <div class="order-cto">
+                    {{#is_pending}}
+                    <button class="btn orange mr-1 js-btn_cancel" data-order-id="{{id}}">Cancel This Request</button>
+                    <button class="btn blue js-btn_edit" onclick="window.location='/orders/{{id}}'">Edit</button>
+                    {{/is_pending}}
+                    {{^is_pending}}
+                    <a href="/orders/{{id}}" class="btn blue">View</a>
+                    {{/is_pending}}  
+                </div>
+                       
+            </div>
+            {{/orders}}
+            {{^orders.length}}
+            <h3 class="tc my-1">You don't have any request now! <a href="/items">Go to shopping</a></h3>
+            {{/orders.length}}
+        </div>          
+        <!-- end .orders -->
+    </div>
+
+{{^is_partial}}
+{{> html-bottom}}
+{{/is_partial}}

@@ -1,0 +1,55 @@
+{{^is_partial}}
+{{> html-top}}
+{{/is_partial}}
+
+    <!-- CART -->
+    {{#cart}}
+    <div class="container">
+        <h1>Cart</h1>
+        <div class="cart mb-1">
+            {{#items}}
+            <div class="item-cart">
+                <div class="item-img">
+                    <img src="images/{{image_path}}" />
+                </div>
+                <div class="item-details">
+                    <h2>{{title}}</h2>
+                    <ul class="item-props">
+                        {{#attr}}
+                        <li><span>{{name}}:</span> {{value}}</li>
+                        {{/attr}}
+                    </ul>
+                    <div class="item-qty mt-1">
+                        <button class="btn btn-minus" data-item-id="{{id}}">-</button> 
+                        <input type="number" name="qty" value="{{qty}}" size="2" min="0" max="10" readonly /> 
+                        <button class="btn btn-plus" data-item-id="{{id}}">+</button>
+                    </div>
+                    <div>
+                        <a href="#" class="remove-item mt-1" data-item-id="{{id}}">Remove</a>
+                    </div>
+                    <div class="item-price">
+                        INR {{price}} x {{qty}} = <span>INR {{total}}</span>
+                    </div>
+                </div>
+            </div>
+            {{/items}}
+            {{#items.length}}            
+            <div class="cart-summary">
+                Total INR {{total}}
+            </div>
+            <div class="cart-cto">
+                <a href="/items" class="btn orange">Add More Items + </a>
+                <button class="btn blue" id="place-order">Place Request</button>
+            </div>
+            {{/items.length}}
+            {{^items.length}}
+                <h3 class="tc my-1">Your cart is empty! <a href="/items">Add Items</a> to your cart.</h3>
+            {{/items.length}}
+        </div>
+        <!-- end .cart -->
+    </div>
+    {{/cart}}
+
+{{^is_partial}}
+{{> html-bottom}}
+{{/is_partial}}

@@ -1,0 +1,63 @@
+{{^is_partial}}
+{{> html-top}}
+{{/is_partial}}
+
+    <!-- order -->
+    <div class="container">        
+        {{#order}}
+        <h1><a href="/orders">My Requests</a> / Request: #{{id}}</h1>
+        <div class="order mb-1">  
+            <div class="order-header">
+                <h2>Request Number: #{{id}}</h2>
+                <div class="order-status">
+                    Status: {{status_text}}
+                </div>
+            </div>         
+            <div class="order-content">
+                {{#items}}
+                <div class="item-cart">
+                    <div class="item-img">
+                        <img src="/images/{{image_path}}" />
+                    </div>
+                    <div class="item-details">
+                        <h2>{{title}}</h2>
+                        <ul class="item-props">
+                            {{#attr}}
+                            <li><span>{{name}}:</span> {{value}}</li>
+                            {{/attr}}
+                        </ul>
+                        <div class="item-qty mt-1">
+                            <button class="btn btn-minus">-</button> 
+                            <input type="number" name="qty" value="{{qty}}" size="2" min="0" max="10" data-item-id="{{item_id}}" /> 
+                            <button class="btn btn-plus">+</button>
+                        </div>
+                        <div>
+                            {{#is_pending}}
+                            <a href="#" class="remove-item mt-1" data-order-id="{{id}}" data-item-id="{{item_id}}">Remove</a>
+                            {{/is_pending}}
+                        </div>
+                        <div class="item-price">
+                            INR {{price}} x {{qty}} = <span>INR {{total}}</span>
+                        </div>
+                    </div>
+                </div>
+                {{/items}}                
+                <div class="cart-summary">
+                    Total INR {{total}}
+                </div>
+                {{#is_pending}}
+                <div class="order-cto">                    
+                    <button class="btn orange js-btn_cancel" data-order-id="{{id}}">Cancel This Request</button>
+                    <button class="btn blue pull-right js-btn_update_order" data-order-id="{{id}}">Update This Request</button>
+                </div>
+                {{/is_pending}}
+            </div>
+        </div>
+        {{/order}}
+        <a href="/orders" class="btn orange"><< Go Back</a>
+        <!-- end .order -->
+    </div>
+
+{{^is_partial}}
+{{> html-bottom}}
+{{/is_partial}}

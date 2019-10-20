@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Stationary Mart</title>
+    <link href="/styles/reset.css" rel="stylesheet" />
+    <link href="/styles/style.css" rel="stylesheet" />
+    <link href="/js/jquery.toast/jquery.toast.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <header>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div>
+            <h1><a href="/">E-Sationary Mart</a></h1>
+        </div>
+        <nav>
+            <ul>
+                <li {{#items_section}}class="active"{{/items_section}}><a href="/">Home</a></li>
+                <li {{#orders_section}}class="active"{{/orders_section}}><a href="/orders">My Requests</a></li>
+                <li {{#cart_section}}class="active"{{/cart_section}}><a href="/cart">Cart</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="content">
